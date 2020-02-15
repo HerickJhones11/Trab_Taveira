@@ -1,0 +1,48 @@
+import matplotlib.pyplot as plt
+
+def ler_ponto(msg):
+    valor = int(input(msg))
+    return valor
+
+
+class Ponto:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def return_p1(self):
+        return self.x
+
+    def return_p2(self):
+        return self.y
+
+
+class Reta:
+    def __init__(self, p1, p2):
+        self.r1 = []
+        self.r2 = []
+        self.point1 = p1
+        self.point2 = p2
+
+    def renderizar_reta(self):
+        for x in range(self.point1, self.point2, 1):# O x vai exercer vários valores no range escolhido,
+            #Pegando o exemplo anterior:O x vai -50 até 50
+            y = x**2 + 2*x + 2 # Através dos valores de x vai ser gerar uma parábola através desta equação
+            self.r1.append(x)
+            self.r2.append(y)
+
+        fig = plt.figure()
+        axes = fig.add_subplot(111)
+        axes.plot(self.r1, self.r2)
+        plt.show()
+
+xr = ler_ponto("Digite um valor para o range de X:")#Colocar um valor negativo
+yr = ler_ponto("Digite um valor para o range de Y:")#Colocar o mesmo valor de xr só que positivo Ex:(-50,50)
+
+p1 = Ponto(xr,yr)
+
+x = p1.return_p1()
+y = p1.return_p2()
+
+r1 = Reta(x, y)
+r1.renderizar_reta()
